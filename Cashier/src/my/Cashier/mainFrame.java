@@ -71,6 +71,7 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         mainPanel = new javax.swing.JPanel();
         panel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -141,6 +142,8 @@ public class mainFrame extends javax.swing.JFrame {
         NextLabel = new javax.swing.JLabel();
         PrevLabel = new javax.swing.JLabel();
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -152,7 +155,7 @@ public class mainFrame extends javax.swing.JFrame {
         mainPanel.setPreferredSize(new java.awt.Dimension(800, 600));
         mainPanel.setLayout(new java.awt.CardLayout());
 
-        panel1.setBackground(new java.awt.Color(51, 204, 255));
+        panel1.setBackground(new java.awt.Color(0, 102, 0));
         panel1.setMaximumSize(new java.awt.Dimension(800, 400));
         panel1.setMinimumSize(new java.awt.Dimension(800, 400));
         panel1.setPreferredSize(new java.awt.Dimension(800, 400));
@@ -175,14 +178,14 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Registrar &");
+        jLabel10.setText("Computerized");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel10.setMinimumSize(new java.awt.Dimension(0, 0));
 
-        jLabel11.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Document Processing Kiosk");
+        jLabel11.setText("Document Request Slip");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel11.setMinimumSize(new java.awt.Dimension(0, 0));
 
@@ -194,9 +197,7 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGap(192, 192, 192)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(191, Short.MAX_VALUE))
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -204,6 +205,10 @@ public class mainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +221,7 @@ public class mainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         mainPanel.add(panel1, "card2");
@@ -226,7 +231,7 @@ public class mainFrame extends javax.swing.JFrame {
         panel2.setPreferredSize(new java.awt.Dimension(800, 400));
         panel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 0));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setMaximumSize(new java.awt.Dimension(800, 400));
         jPanel3.setMinimumSize(new java.awt.Dimension(800, 400));
@@ -290,7 +295,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         mainPanel.add(panel2, "card3");
 
-        panel3.setBackground(new java.awt.Color(0, 102, 204));
+        panel3.setBackground(new java.awt.Color(0, 102, 0));
         panel3.setMaximumSize(new java.awt.Dimension(800, 400));
         panel3.setMinimumSize(new java.awt.Dimension(800, 400));
         panel3.setPreferredSize(new java.awt.Dimension(800, 400));
@@ -427,7 +432,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         mainPanel.add(panel3, "card4");
 
-        panel4.setBackground(new java.awt.Color(51, 153, 255));
+        panel4.setBackground(new java.awt.Color(0, 102, 0));
         panel4.setMaximumSize(new java.awt.Dimension(800, 400));
         panel4.setMinimumSize(new java.awt.Dimension(800, 400));
         panel4.setPreferredSize(new java.awt.Dimension(800, 400));
@@ -546,10 +551,13 @@ public class mainFrame extends javax.swing.JFrame {
 
         mainPanel.add(panel4, "card6");
 
+        panel5.setBackground(new java.awt.Color(0, 102, 0));
         panel5.setMaximumSize(new java.awt.Dimension(800, 400));
         panel5.setMinimumSize(new java.awt.Dimension(800, 400));
         panel5.setPreferredSize(new java.awt.Dimension(800, 400));
         panel5.setLayout(new java.awt.BorderLayout());
+
+        jPanel9.setBackground(new java.awt.Color(0, 102, 0));
 
         req1.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
         req1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -679,6 +687,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         mainPanel.add(panel5, "card7");
 
+        panel6.setBackground(new java.awt.Color(0, 102, 0));
         panel6.setMaximumSize(new java.awt.Dimension(800, 400));
         panel6.setMinimumSize(new java.awt.Dimension(800, 400));
         panel6.setPreferredSize(new java.awt.Dimension(800, 400));
@@ -697,6 +706,8 @@ public class mainFrame extends javax.swing.JFrame {
         panel7.setPreferredSize(new java.awt.Dimension(800, 400));
         panel7.setLayout(new java.awt.BorderLayout());
 
+        jPanel8.setBackground(new java.awt.Color(0, 102, 0));
+
         jLabel7.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Transactions?");
@@ -712,6 +723,8 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel16.setMinimumSize(new java.awt.Dimension(0, 0));
         jLabel16.setName(""); // NOI18N
         jLabel16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 0));
 
         no_btn.setText("No");
         no_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1392,6 +1405,7 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel course_textfield;
     private javax.swing.JCheckBox deploma;
     private javax.swing.JCheckBox gmc;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
