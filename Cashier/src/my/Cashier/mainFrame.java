@@ -23,8 +23,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.awt.print.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import my.TwoWaySerialComm;
 /**
  *
@@ -36,13 +40,16 @@ public class mainFrame extends javax.swing.JFrame {
         initComponents();
         next_btn.setVisible(false);
         prev_btn.setVisible(false);
-        NextLabel.setVisible(false);
-        PrevLabel.setVisible(false);
+        jTextField1.setEnabled(false);
+        jComboBox2.setEnabled(false);
+        jComboBox1.setEnabled(false);
+        jTextField4.setEnabled(false);
+       jList1.setModel(model);
         ImageIcon image = new ImageIcon(getClass().getResource("/my/Passer_2017.jpg"));
         Image my_image = image.getImage();
         Image resized_image = my_image.getScaledInstance(106, 133,  java.awt.Image.SCALE_SMOOTH);
         ImageIcon profilepic = new ImageIcon(resized_image);
-        profilepic_label.setIcon(profilepic);
+        profilepic_label.setIcon(profilepic);     
 //        connect();
         PrinterJob job = PrinterJob.getPrinterJob();
 //        insert("Uzumaki Naruto","202","CpE","2018-2019","link");
@@ -60,7 +67,8 @@ public class mainFrame extends javax.swing.JFrame {
     boolean prevpressed = false;
     ArrayList<String> req = new ArrayList<>();
     Map<String, String> reqprices = new HashMap<>();
-
+   DefaultListModel model = new DefaultListModel();
+  
         
     /** This method is called from within the constructor to
      * initialize the form.
@@ -71,7 +79,6 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
         mainPanel = new javax.swing.JPanel();
         panel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -79,48 +86,63 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         panel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         sn_field = new javax.swing.JTextField();
         panel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        profilepic_label = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        sn_textfield = new javax.swing.JLabel();
-        name_textfield = new javax.swing.JLabel();
-        course_textfield = new javax.swing.JLabel();
         sy_textfield = new javax.swing.JLabel();
+        course_textfield = new javax.swing.JLabel();
+        name_textfield = new javax.swing.JLabel();
+        sn_textfield = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        profilepic_label = new javax.swing.JLabel();
         panel4 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        tor = new javax.swing.JCheckBox();
-        cet = new javax.swing.JCheckBox();
-        cog = new javax.swing.JCheckBox();
-        deploma = new javax.swing.JCheckBox();
-        gmc = new javax.swing.JCheckBox();
-        so = new javax.swing.JCheckBox();
-        panel5 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        req1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        req3 = new javax.swing.JLabel();
-        req2 = new javax.swing.JLabel();
-        req4 = new javax.swing.JLabel();
-        req6 = new javax.swing.JLabel();
-        req5 = new javax.swing.JLabel();
-        req1price = new javax.swing.JLabel();
-        req2price = new javax.swing.JLabel();
-        req3price = new javax.swing.JLabel();
-        req4price = new javax.swing.JLabel();
-        req5price = new javax.swing.JLabel();
-        req6price = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        reqTotal = new javax.swing.JLabel();
-        panel6 = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jLabel19 = new javax.swing.JLabel();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jLabel20 = new javax.swing.JLabel();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        panel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         panel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -132,26 +154,21 @@ public class mainFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
         prev_btn = new javax.swing.JButton();
         btn1 = new javax.swing.JButton();
         next_btn = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
         cancel_btn = new javax.swing.JButton();
-        Proceed_Label = new javax.swing.JLabel();
-        NextLabel = new javax.swing.JLabel();
-        PrevLabel = new javax.swing.JLabel();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(1920, 1080));
         setType(java.awt.Window.Type.UTILITY);
 
+        mainPanel.setMaximumSize(new java.awt.Dimension(1920, 1080));
         mainPanel.setPreferredSize(new java.awt.Dimension(800, 600));
         mainPanel.setLayout(new java.awt.CardLayout());
 
@@ -178,14 +195,14 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Computerized");
+        jLabel10.setText("Automated");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel10.setMinimumSize(new java.awt.Dimension(0, 0));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Document Request Slip");
+        jLabel11.setText("Document Requesting Kiosk");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel11.setMinimumSize(new java.awt.Dimension(0, 0));
 
@@ -193,68 +210,54 @@ public class mainFrame extends javax.swing.JFrame {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(191, Short.MAX_VALUE))
-                    .addGroup(panel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         mainPanel.add(panel1, "card2");
 
+        panel2.setBackground(new java.awt.Color(0, 102, 51));
         panel2.setMaximumSize(new java.awt.Dimension(800, 400));
         panel2.setMinimumSize(new java.awt.Dimension(800, 400));
         panel2.setPreferredSize(new java.awt.Dimension(800, 400));
-        panel2.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 0));
-        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.setMaximumSize(new java.awt.Dimension(800, 400));
-        jPanel3.setMinimumSize(new java.awt.Dimension(800, 400));
-        jPanel3.setPreferredSize(new java.awt.Dimension(800, 400));
 
         jLabel2.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Enter your");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabel8.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Student Number");
-        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel8.setToolTipText("");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel8.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         sn_field.setFont(new java.awt.Font("Waree", 1, 36)); // NOI18N
         sn_field.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sn_field.setMaximumSize(new java.awt.Dimension(7, 15));
         sn_field.setMinimumSize(new java.awt.Dimension(7, 15));
         sn_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,96 +265,40 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(sn_field, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(289, 289, 289))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(321, 321, 321)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(320, 320, 320))
+        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
+        panel2.setLayout(panel2Layout);
+        panel2Layout.setHorizontalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addContainerGap(188, Short.MAX_VALUE)
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sn_field, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel8))
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel2)))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+        panel2Layout.setVerticalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addGap(81, 81, 81)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sn_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
-
-        panel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         mainPanel.add(panel2, "card3");
 
         panel3.setBackground(new java.awt.Color(0, 102, 0));
-        panel3.setMaximumSize(new java.awt.Dimension(800, 400));
+        panel3.setMaximumSize(new java.awt.Dimension(1920, 1080));
         panel3.setMinimumSize(new java.awt.Dimension(800, 400));
-        panel3.setPreferredSize(new java.awt.Dimension(800, 400));
-
-        jPanel4.setMaximumSize(new java.awt.Dimension(750, 550));
-        jPanel4.setOpaque(false);
-        jPanel4.setPreferredSize(new java.awt.Dimension(750, 550));
-
-        profilepic_label.setBackground(new java.awt.Color(255, 102, 255));
-        profilepic_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        jLabel3.setFont(new java.awt.Font("Noto Sans CJK KR Regular", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel3.setText("Name:");
-
-        jLabel12.setFont(new java.awt.Font("Noto Sans Mono CJK KR Regular", 0, 36)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel12.setText("Course:");
-
-        jLabel13.setFont(new java.awt.Font("Noto Sans Mono CJK KR Regular", 0, 36)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel13.setText("Graduated S.Y.:");
-
-        jLabel14.setFont(new java.awt.Font("Noto Sans Mono CJK KR Regular", 0, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel14.setText("Student #:");
-
-        sn_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
-        sn_textfield.setForeground(new java.awt.Color(255, 255, 255));
-        sn_textfield.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        sn_textfield.setAlignmentX(0.5F);
-        sn_textfield.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        sn_textfield.setIconTextGap(8);
-        sn_textfield.setMaximumSize(new java.awt.Dimension(4, 40));
-        sn_textfield.setMinimumSize(new java.awt.Dimension(4, 40));
-        sn_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
-
-        name_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
-        name_textfield.setForeground(new java.awt.Color(255, 255, 255));
-        name_textfield.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        name_textfield.setAlignmentX(0.5F);
-        name_textfield.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        name_textfield.setIconTextGap(8);
-        name_textfield.setMaximumSize(new java.awt.Dimension(4, 40));
-        name_textfield.setMinimumSize(new java.awt.Dimension(4, 40));
-        name_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
-
-        course_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
-        course_textfield.setForeground(new java.awt.Color(255, 255, 255));
-        course_textfield.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        course_textfield.setAlignmentX(0.5F);
-        course_textfield.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        course_textfield.setIconTextGap(8);
-        course_textfield.setMaximumSize(new java.awt.Dimension(4, 20));
-        course_textfield.setMinimumSize(new java.awt.Dimension(4, 20));
-        course_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
+        panel3.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         sy_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
         sy_textfield.setForeground(new java.awt.Color(255, 255, 255));
@@ -363,190 +310,572 @@ public class mainFrame extends javax.swing.JFrame {
         sy_textfield.setMinimumSize(new java.awt.Dimension(4, 40));
         sy_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(profilepic_label, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(course_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                            .addComponent(name_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sy_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(sn_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(name_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(sn_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(course_textfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(profilepic_label, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel13)
-                    .addComponent(sy_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(280, 280, 280))
-        );
+        course_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
+        course_textfield.setForeground(new java.awt.Color(255, 255, 255));
+        course_textfield.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        course_textfield.setAlignmentX(0.5F);
+        course_textfield.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        course_textfield.setIconTextGap(8);
+        course_textfield.setMaximumSize(new java.awt.Dimension(4, 20));
+        course_textfield.setMinimumSize(new java.awt.Dimension(4, 20));
+        course_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
+
+        name_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
+        name_textfield.setForeground(new java.awt.Color(255, 255, 255));
+        name_textfield.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        name_textfield.setAlignmentX(0.5F);
+        name_textfield.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        name_textfield.setIconTextGap(8);
+        name_textfield.setMaximumSize(new java.awt.Dimension(4, 40));
+        name_textfield.setMinimumSize(new java.awt.Dimension(4, 40));
+        name_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
+
+        sn_textfield.setFont(new java.awt.Font("Noto Sans CJK KR Bold", 3, 24)); // NOI18N
+        sn_textfield.setForeground(new java.awt.Color(255, 255, 255));
+        sn_textfield.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        sn_textfield.setAlignmentX(0.5F);
+        sn_textfield.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        sn_textfield.setIconTextGap(8);
+        sn_textfield.setMaximumSize(new java.awt.Dimension(4, 40));
+        sn_textfield.setMinimumSize(new java.awt.Dimension(4, 40));
+        sn_textfield.setPreferredSize(new java.awt.Dimension(4, 40));
+
+        jLabel14.setFont(new java.awt.Font("Noto Sans Mono CJK KR Regular", 0, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel14.setText("Student #:");
+
+        jLabel13.setFont(new java.awt.Font("Noto Sans Mono CJK KR Regular", 0, 36)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel13.setText("Graduated S.Y.:");
+
+        jLabel12.setFont(new java.awt.Font("Noto Sans Mono CJK KR Regular", 0, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel12.setText("Course:");
+
+        jLabel3.setFont(new java.awt.Font("Noto Sans CJK KR Regular", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel3.setText("Name:");
+
+        profilepic_label.setBackground(new java.awt.Color(255, 102, 255));
+        profilepic_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
         panel3.setLayout(panel3Layout);
         panel3Layout.setHorizontalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                .addContainerGap(193, Short.MAX_VALUE)
+                .addComponent(profilepic_label, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel3Layout.createSequentialGroup()
+                        .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(course_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(name_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(sy_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE))
+                    .addComponent(sn_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+            .addGroup(panel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel3Layout.createSequentialGroup()
+                        .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel3Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(name_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14)
+                            .addComponent(sn_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(course_textfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(profilepic_label, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13)
+                    .addComponent(sy_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         mainPanel.add(panel3, "card4");
 
         panel4.setBackground(new java.awt.Color(0, 102, 0));
-        panel4.setMaximumSize(new java.awt.Dimension(800, 400));
+        panel4.setMaximumSize(new java.awt.Dimension(1920, 1080));
         panel4.setMinimumSize(new java.awt.Dimension(800, 400));
-        panel4.setPreferredSize(new java.awt.Dimension(800, 400));
+        panel4.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "What Type of Document Do You Want to Process?", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Waree", 3, 18), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel7.setOpaque(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(888, 182));
-
-        tor.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        tor.setForeground(new java.awt.Color(255, 255, 255));
-        tor.setText("Transcript of Records");
-        tor.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox1.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("For Board Examination");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                torActionPerformed(evt);
+                jCheckBox1ActionPerformed(evt);
             }
         });
 
-        cet.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        cet.setForeground(new java.awt.Color(255, 255, 255));
-        cet.setText("CET");
-        cet.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox2.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setText("For Employment Abroad");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cetActionPerformed(evt);
+                jCheckBox2ActionPerformed(evt);
             }
         });
 
-        cog.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        cog.setForeground(new java.awt.Color(255, 255, 255));
-        cog.setText("Cert. of Granduation");
-        cog.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox3.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox3.setText("For Promotion");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cogActionPerformed(evt);
+                jCheckBox3ActionPerformed(evt);
             }
         });
 
-        deploma.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        deploma.setForeground(new java.awt.Color(255, 255, 255));
-        deploma.setText("Deploma");
-        deploma.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox4.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox4.setText("For Local Employment");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deplomaActionPerformed(evt);
+                jCheckBox4ActionPerformed(evt);
             }
         });
 
-        gmc.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        gmc.setForeground(new java.awt.Color(255, 255, 255));
-        gmc.setText("Good Moral Character");
-        gmc.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox5.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox5.setText("For Authentication");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gmcActionPerformed(evt);
+                jCheckBox5ActionPerformed(evt);
             }
         });
 
-        so.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        so.setForeground(new java.awt.Color(255, 255, 255));
-        so.setText("Special Orders");
-        so.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox6.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox6.setText("Honorable Dismissal");
+        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                soActionPerformed(evt);
+                jCheckBox6ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tor)
-                    .addComponent(cog)
-                    .addComponent(cet))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deploma)
-                    .addComponent(gmc)
-                    .addComponent(so))
-                .addGap(12, 12, 12))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(tor)
-                        .addGap(18, 18, 18)
-                        .addComponent(cet)
-                        .addGap(18, 18, 18)
-                        .addComponent(cog))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(deploma)
-                        .addGap(18, 18, 18)
-                        .addComponent(gmc)
-                        .addGap(18, 18, 18)
-                        .addComponent(so)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
+        jCheckBox8.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox8.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox8.setText("Units Earned in the Graduate Program");
+        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox8ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox9.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox9.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox9.setText("Units Earned in the Doctoral Program");
+        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox9ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox10.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox10.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox10.setText("Completed Academic Requirements");
+        jCheckBox10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox10ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox11.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox11.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox11.setText("G R A D U A T E");
+        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox11ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox12.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox12.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox12.setText("Units Earned (Undergraduate)");
+        jCheckBox12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox12ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox13.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox13.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox13.setText("Candidates for Graduation");
+        jCheckBox13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox13ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox14.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox14.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox14.setText("Good Moral Character");
+        jCheckBox14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox14ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox15.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox15.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox15.setText("Officially Enrolled");
+        jCheckBox15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox15ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox16.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox16.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox16.setText("Course Description");
+        jCheckBox16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox16ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox17.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox17.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox17.setText("Others");
+        jCheckBox17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox17ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Please specify");
+
+        jLabel6.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Transcript of Records");
+
+        jLabel17.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Certification of:");
+
+        jLabel18.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Grades for the Following Semesters");
+
+        jCheckBox7.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox7.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox7.setText("First Semester");
+        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox7ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox18.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox18.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox18.setText("Second Semester");
+        jCheckBox18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox18ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox19.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox19.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox19.setText("Summer");
+        jCheckBox19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox19ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox20.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox20.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox20.setText("Authentication of FORM 138 (High School Card)");
+        jCheckBox20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox20ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox21.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox21.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox21.setText("Authentication of FORM 137-A (Permanent record H.S.)");
+        jCheckBox21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox21ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox22.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox22.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox22.setText("Authentication of NCEE");
+        jCheckBox22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox22ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox23.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox23.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox23.setText("Special Orders (S.O.)");
+        jCheckBox23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox23ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox24.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox24.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox24.setText("D I P L O MA");
+        jCheckBox24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox24ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox25.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox25.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox25.setText("Replacement of DIPLOMA");
+        jCheckBox25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox25ActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Course:");
+
+        jCheckBox26.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox26.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox26.setText("Authentication of DIPLOMA");
+        jCheckBox26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox26ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Course:");
+
+        jCheckBox27.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox27.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox27.setText("Authentication of other Documents");
+        jCheckBox27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox27ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Please Specify");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox28.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        jCheckBox28.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox28.setText("For Back Accounts");
+        jCheckBox28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox28ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CE", "COE", "CE", "ECE" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CE", "COE", "CE", "ECE" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
         panel4.setLayout(panel4Layout);
         panel4Layout.setHorizontalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel4Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox6)
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox5)
+                            .addComponent(jCheckBox4)
+                            .addComponent(jCheckBox3)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox1)))
+                    .addComponent(jLabel6))
+                .addGap(50, 50, 50)
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jCheckBox9)
+                            .addComponent(jCheckBox8)
+                            .addComponent(jCheckBox10)
+                            .addComponent(jCheckBox11)
+                            .addComponent(jCheckBox12)
+                            .addComponent(jCheckBox14)
+                            .addComponent(jCheckBox15)
+                            .addComponent(jCheckBox17)
+                            .addComponent(jCheckBox16)
+                            .addComponent(jCheckBox13))
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addGap(167, 167, 167)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox7)
+                                    .addComponent(jCheckBox18)
+                                    .addComponent(jCheckBox19)))))
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox20)
+                            .addComponent(jLabel18)
+                            .addComponent(jCheckBox21)
+                            .addComponent(jCheckBox22)
+                            .addComponent(jCheckBox23)
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jCheckBox25)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel20))
+                                .addGap(36, 36, 36)
+                                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCheckBox26)
+                            .addComponent(jCheckBox27)
+                            .addComponent(jCheckBox28)
+                            .addComponent(jCheckBox24))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel4Layout.setVerticalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel4Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addComponent(jCheckBox8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addComponent(jCheckBox7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox5)
+                        .addGap(36, 36, 36)
+                        .addComponent(jCheckBox6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox28)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainPanel.add(panel4, "card6");
@@ -555,151 +884,38 @@ public class mainFrame extends javax.swing.JFrame {
         panel5.setMaximumSize(new java.awt.Dimension(800, 400));
         panel5.setMinimumSize(new java.awt.Dimension(800, 400));
         panel5.setPreferredSize(new java.awt.Dimension(800, 400));
-        panel5.setLayout(new java.awt.BorderLayout());
-
-        jPanel9.setBackground(new java.awt.Color(0, 102, 0));
-
-        req1.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        req1.setText("4tr43rt4");
-        req1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel5.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Total Processing");
+        jLabel5.setText("Requests");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        req3.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        req3.setText("jLabel15");
+        jList1.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        jScrollPane2.setViewportView(jList1);
 
-        req2.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        req2.setText("jLabel15");
-
-        req4.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        req4.setText("jLabel15");
-
-        req6.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        req6.setText("jLabel15");
-
-        req5.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        req5.setText("jLabel15");
-
-        req1price.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req1price.setText("jLabel15");
-
-        req2price.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req2price.setText("jLabel15");
-
-        req3price.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req3price.setText("jLabel15");
-
-        req4price.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req4price.setText("jLabel15");
-
-        req5price.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req5price.setText("jLabel15");
-
-        req6price.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        req6price.setText("jLabel15");
-
-        jLabel15.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        jLabel15.setText("Total:");
-
-        reqTotal.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
-        reqTotal.setText("jLabel16");
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
+        panel5.setLayout(panel5Layout);
+        panel5Layout.setHorizontalGroup(
+            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel15)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(req6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(req5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(req4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(req2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(req3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(req1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(180, 180, 180)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(req6price, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(req5price, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(req4price, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(req2price, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(req3price, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(req1price, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reqTotal))
-                .addGap(97, 97, 97))
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        panel5Layout.setVerticalGroup(
+            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(req1price, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req2price, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(req3price, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req4price, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req5price, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req6price, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(req1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(req3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(req6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel15))
-                    .addComponent(reqTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        panel5.add(jPanel9, java.awt.BorderLayout.PAGE_START);
-
         mainPanel.add(panel5, "card7");
-
-        panel6.setBackground(new java.awt.Color(0, 102, 0));
-        panel6.setMaximumSize(new java.awt.Dimension(800, 400));
-        panel6.setMinimumSize(new java.awt.Dimension(800, 400));
-        panel6.setPreferredSize(new java.awt.Dimension(800, 400));
-        panel6.setLayout(new java.awt.BorderLayout());
-
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 11)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Documents you have requested");
-        jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panel6.add(jLabel6, java.awt.BorderLayout.CENTER);
-
-        mainPanel.add(panel6, "card7");
 
         panel7.setMaximumSize(new java.awt.Dimension(800, 400));
         panel7.setMinimumSize(new java.awt.Dimension(800, 400));
@@ -709,6 +925,7 @@ public class mainFrame extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(0, 102, 0));
 
         jLabel7.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Transactions?");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -717,6 +934,7 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel16.setFont(new java.awt.Font("Waree", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Do you have any other");
         jLabel16.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -751,11 +969,11 @@ public class mainFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(yes_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(356, 356, 356)
                 .addComponent(no_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(200, 200, 200))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -772,31 +990,25 @@ public class mainFrame extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(331, Short.MAX_VALUE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         panel7.add(jPanel8, java.awt.BorderLayout.CENTER);
@@ -812,7 +1024,7 @@ public class mainFrame extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
+                .addContainerGap(396, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(161, 161, 161))
         );
@@ -821,24 +1033,22 @@ public class mainFrame extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         mainPanel.add(jPanel10, "card9");
 
         getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(800, 200));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1920, 250));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 200));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 200));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jPanel5.setMaximumSize(new java.awt.Dimension(800, 100));
-        jPanel5.setMinimumSize(new java.awt.Dimension(287800, 100));
-        jPanel5.setPreferredSize(new java.awt.Dimension(800, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 250));
 
         prev_btn.setBackground(new java.awt.Color(0, 204, 255));
+        prev_btn.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        prev_btn.setForeground(new java.awt.Color(0, 51, 51));
         prev_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/Cashier/left-arrow (64).png"))); // NOI18N
+        prev_btn.setText("Prev");
         prev_btn.setBorderPainted(false);
         prev_btn.setContentAreaFilled(false);
         prev_btn.setFocusCycleRoot(true);
@@ -853,11 +1063,12 @@ public class mainFrame extends javax.swing.JFrame {
                 prev_btnActionPerformed(evt);
             }
         });
-        jPanel5.add(prev_btn);
 
         btn1.setBackground(new java.awt.Color(0, 102, 51));
-        btn1.setForeground(new java.awt.Color(204, 204, 204));
+        btn1.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        btn1.setForeground(new java.awt.Color(255, 0, 0));
         btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/Cashier/proceed.png"))); // NOI18N
+        btn1.setText("Proceed");
         btn1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn1.setBorderPainted(false);
         btn1.setContentAreaFilled(false);
@@ -871,10 +1082,12 @@ public class mainFrame extends javax.swing.JFrame {
                 btn1ActionPerformed(evt);
             }
         });
-        jPanel5.add(btn1);
 
         next_btn.setBackground(new java.awt.Color(0, 204, 255));
+        next_btn.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        next_btn.setForeground(new java.awt.Color(0, 51, 51));
         next_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/Cashier/right-arrow (64).png"))); // NOI18N
+        next_btn.setText("NEXT");
         next_btn.setBorderPainted(false);
         next_btn.setContentAreaFilled(false);
         next_btn.setFocusCycleRoot(true);
@@ -887,7 +1100,6 @@ public class mainFrame extends javax.swing.JFrame {
                 next_btnActionPerformed(evt);
             }
         });
-        jPanel5.add(next_btn);
 
         cancel_btn.setBackground(new java.awt.Color(204, 51, 0));
         cancel_btn.setForeground(new java.awt.Color(204, 204, 204));
@@ -905,52 +1117,50 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
-        Proceed_Label.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
-        Proceed_Label.setText("Proceed");
-
-        NextLabel.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
-        NextLabel.setText("Next");
-
-        PrevLabel.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
-        PrevLabel.setText("Prev");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(232, Short.MAX_VALUE)
-                .addComponent(PrevLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addComponent(Proceed_Label)
-                .addGap(125, 125, 125)
-                .addComponent(NextLabel)
-                .addContainerGap(236, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addGap(0, 361, Short.MAX_VALUE)
-                    .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 362, Short.MAX_VALUE)))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(prev_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(next_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(353, Short.MAX_VALUE)
+                .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 347, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Proceed_Label)
-                    .addComponent(NextLabel)
-                    .addComponent(PrevLabel))
-                .addContainerGap(148, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addGap(0, 73, Short.MAX_VALUE)
-                    .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 74, Short.MAX_VALUE)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(next_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prev_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-
-        jPanel5.add(jPanel6);
-
-        jPanel1.add(jPanel5, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -958,8 +1168,26 @@ public class mainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void no_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_btnActionPerformed
-        String YourString = "Name:" + pname + "\t  Course&Year: " + pcourse + " " + psy + "\nStudentNumber:" + psn + "\nRequested Documents:\n\t" + req.get(0)
-                + "\n\t" + req.get(1) + "\n\t" + req.get(2) + "\n\t" + req.get(3) + "\n\t" + req.get(4) + "\n\t" + req.get(5); //define and set contents of your string - remember about formating with \n if you want to have it split on lines
+    
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	LocalDate localDate = LocalDate.now();
+	//System.out.println(); //2016/11/16
+    
+    String YourString = "\t          Universidad de Zamboanga\n\t          OFFICE OF THE REGISTRAR\n\tA.Quadrangle,Zamboanga City, 7000 Philippines\n Tel.Nos.(062) 991-5677:991-1135 Fax No. (062)"
+                + "992-7677:991-5390\nWebsite www.uz.edu.ph\tE-mail Address: registrar@uz.edu.ph\n\nDate:"+ dtf.format(localDate)+ "\n\nFull Name:" + pname + 
+            "\n\n___________________________________\nMiddle Name for Married Woman" 
+             + "\n\nCourse&Year: " + pcourse + 
+            "\n\nStudentNumber:" + psn +
+            "\n\nSchool Year last Attended: " +  psy +
+            "\n\n___________________________________\nRequested By:(Full Name)"+
+            "\n\nRequested Documents:"; 
+            //define and set contents of your string - remember about formating with \n if you want to have it split on lines
+    for(String request: req){
+        YourString += "\n\t" + "\u2713" + request;
+    }
+    YourString += "\n\n\n\nSignature: ______________________Contact No._______________________" +
+            "\n\nNote:\n    To be returned to the Head of Processig and Realsing Section\n for your ACCOUNT CLEARANCE\n    Letters of Authorization and Identification Card to be presented"
+            + " in case of 3rd Person filling the request.";
     jTextArea1.setLineWrap(true); //set line wrap for YourTextArea - this will prevent too long lines to be cut - they will be wrapaed to next line
     jTextArea1.append(YourString); //append YourString to YourTextArea 
         try {
@@ -970,7 +1198,7 @@ public class mainFrame extends javax.swing.JFrame {
                 Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.first(mainPanel);
+        
         flag = false;
         count = 0;
         prevpressed=false;
@@ -978,16 +1206,9 @@ public class mainFrame extends javax.swing.JFrame {
         btn1.setVisible(true);
         next_btn.setVisible(false);
         prev_btn.setVisible(false);
-        tor.setSelected(false);
-        cet.setSelected(false);
-        cog.setSelected(false);
-        deploma.setSelected(false);
-        gmc.setSelected(false);
-        so.setSelected(false);
-        Proceed_Label.setVisible(true);
-        NextLabel.setVisible(false);
-        PrevLabel.setVisible(false);
-           //jTextArea1.print(null, null, false, null, null, false); //this will display print dialog that will lead you to print contents of YourTextArea so in efect contents of YourString
+        card.first(mainPanel);
+        //jTextArea1.print(null, null, true, null, null, false);
+          // jTextArea1.print(null, null, false, null, null, false); //this will display print dialog that will lead you to print contents of YourTextArea so in efect contents of YourString
         } catch (PrinterException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -998,127 +1219,22 @@ public class mainFrame extends javax.swing.JFrame {
         btn1.setVisible(false);
         next_btn.setVisible(true);
         prev_btn.setVisible(true);
-        PrevLabel.setVisible(true);
-        NextLabel.setVisible(true);
         prev_btn.setEnabled(false);
         count= 3;
         card.show(mainPanel,"card6");
     }//GEN-LAST:event_yes_btnActionPerformed
 
-    private void prev_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prev_btnActionPerformed
+    private void sn_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sn_fieldActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.previous(mainPanel);
-        count--;
-        prevpressed = true;
-        flag = false;
-        if(count ==3){
-//            count = 0;
-//            btn1.setVisible(true);
-//            next_btn.setVisible(false);
-            prev_btn.setEnabled(false);
-            PrevLabel.setVisible(false);
-        }
-    }//GEN-LAST:event_prev_btnActionPerformed
-
-    private void next_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_btnActionPerformed
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        if(prevpressed){
-            prevpressed = false;
-            //card.next(mainPanel);
-        }
-        if(!flag){count++;}
-        if(count == 4){
-           
-            if(!req.isEmpty()){
-                prev_btn.setEnabled(true);
-                PrevLabel.setVisible(true);
-                flag = false;
-                reqprices.put(tor.getText(),"250");
-                reqprices.put(cet.getText(),"150");
-                reqprices.put(cog.getText(),"300");
-                reqprices.put(deploma.getText(),"280");
-                reqprices.put(gmc.getText(),"220");
-                reqprices.put(so.getText(),"200");
-                int reqsize = req.size();
-                if(reqsize < 7){
-                for(int i=0;i<6-reqsize;i++){
-                    req.add(" ");
-                }
-                spaceadded = 6-reqsize;
-                }
-                
-                while(req.indexOf(" ") >= 0){
-                   req.remove(" ");
-                }
-
-                reqsize = req.size();
-                for(int i=0;i<6-reqsize;i++){
-                    req.add(" ");
-                }
-                
-                System.out.println(req);
-                req1.setText(req.get(0));
-                req1price.setText(reqprices.get(req.get(0)));
-                req2.setText(req.get(1));
-                req2price.setText(reqprices.get(req.get(1)));
-                req3.setText(req.get(2));
-                req3price.setText(reqprices.get(req.get(2)));
-                req4.setText(req.get(3));
-                req4price.setText(reqprices.get(req.get(3)));
-                req5.setText(req.get(4));
-                req5price.setText(reqprices.get(req.get(4)));
-                req6.setText(req.get(5));
-                req6price.setText(reqprices.get(req.get(5)));
-                int total = 0;
-                for(int i=0;i<req.size();i++){
-                    if(req.get(i) != " "){
-                        total = total + Integer.parseInt(reqprices.get(req.get(i)));
-                    }
-                }
-                
-                reqTotal.setText(Integer.toString(total));
-                card.next(mainPanel);
-            }
-            else{
-                flag = true;
-               
-            }
-        }
-        
-        if(count ==5){
-            card.next(mainPanel);
-            prev_btn.setEnabled(true);
-            //NextLabel.setVisible(false);
-            PrevLabel.setVisible(true);
-            //count = 0;
-
-   
-        }
-        if(count ==5){
-            card.next(mainPanel);
-            next_btn.setVisible(false);
-            prev_btn.setVisible(false);
-            NextLabel.setVisible(false);
-            PrevLabel.setVisible(false);
-              }
-
-    }//GEN-LAST:event_next_btnActionPerformed
-
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        if(count == 0 ){
-            card.next(mainPanel);
-        }
-        if(!flag){
+          if(!flag){
             count++;
         }
-        
-       if (count == 2){
+        if (count == 2){
             String sn = sn_field.getText();
             if(!sn.isEmpty()){
-            
-            sn_field.setText("");
-            System.out.println(sn);
+
+                sn_field.setText("");
+                System.out.println(sn);
                 if(selectAll(sn)){
                     name_textfield.setText(pname);
                     sn_textfield.setText(psn);
@@ -1133,27 +1249,310 @@ public class mainFrame extends javax.swing.JFrame {
 
             }
             else{
-            flag = true;
-            System.out.println("No SN");
+                flag = true;
+                System.out.println("No SN");
             }
         }
-       else if(count ==3){
-            btn1.setVisible(false);
-            Proceed_Label.setVisible(false);
-            next_btn.setVisible(true);
-            prev_btn.setVisible(true);
-            prev_btn.setEnabled(false);
-            NextLabel.setVisible(true);
-            card.next(mainPanel);
-            
-        }
-
-    }//GEN-LAST:event_btn1ActionPerformed
-
-    private void sn_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sn_fieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_sn_fieldActionPerformed
 
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+      if(jCheckBox1.isSelected()){
+          req.add("TOR " + jCheckBox1.getText());
+      }
+      else{
+          if(req.contains("TOR " + jCheckBox1.getText())){
+              req.remove("TOR " + jCheckBox1.getText());
+          }
+      }
+      //System.out.print(req);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+       if(jCheckBox2.isSelected()){
+          req.add("TOR " + jCheckBox2.getText());
+      }
+      else{
+          if(req.contains("TOR " + jCheckBox2.getText())){
+              req.remove("TOR " + jCheckBox2.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+      if(jCheckBox3.isSelected()){
+          req.add("TOR " +  jCheckBox3.getText());
+      }
+      else{
+          if(req.contains("TOR " +  jCheckBox3.getText())){
+              req.remove("TOR " +  jCheckBox3.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+     if(jCheckBox4.isSelected()){
+          req.add("TOR " +  jCheckBox4.getText());
+      }
+      else{
+          if(req.contains("TOR " +  jCheckBox4.getText())){
+              req.remove("TOR " +  jCheckBox4.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+      if(jCheckBox5.isSelected()){
+          req.add("TOR " + jCheckBox5.getText());
+      }
+      else{
+          if(req.contains("TOR " + jCheckBox5.getText())){
+              req.remove("TOR " + jCheckBox5.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
+
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+     if(jCheckBox6.isSelected()){
+          req.add(jCheckBox6.getText());
+      }
+      else{
+          if(req.contains(jCheckBox6.getText())){
+              req.remove(jCheckBox6.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
+
+    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+      if(jCheckBox8. isSelected()){
+          req.add("Certification of " + jCheckBox8.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox8.getText())){
+              req.remove("Certification of " + jCheckBox8.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox8ActionPerformed
+
+    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
+      if(jCheckBox9.isSelected()){
+          req.add("Certification of " + jCheckBox9.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox9.getText())){
+              req.remove("Certification of " + jCheckBox9.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox9ActionPerformed
+
+    private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
+      if(jCheckBox10.isSelected()){
+          req.add("Certification of " + jCheckBox1.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox10.getText())){
+              req.remove("Certification of " + jCheckBox10.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox10ActionPerformed
+
+    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+      if(jCheckBox11.isSelected()){
+          req.add("Certification of " + jCheckBox11.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox11.getText())){
+              req.remove("Certification of " + jCheckBox11.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox11ActionPerformed
+
+    private void jCheckBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox12ActionPerformed
+      if(jCheckBox12.isSelected()){
+          req.add("Certification of " + jCheckBox12.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox12.getText())){
+              req.remove("Certification of " + jCheckBox12.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox12ActionPerformed
+
+    private void jCheckBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox13ActionPerformed
+      if(jCheckBox13.isSelected()){
+          req.add("Certification of " + jCheckBox13.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox13.getText())){
+              req.remove("Certification of " + jCheckBox13.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox13ActionPerformed
+
+    private void jCheckBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox14ActionPerformed
+      if(jCheckBox14.isSelected()){
+          req.add("Certification of " + jCheckBox14.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox14.getText())){
+              req.remove("Certification of " + jCheckBox14.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox14ActionPerformed
+
+    private void jCheckBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox15ActionPerformed
+      if(jCheckBox15.isSelected()){
+          req.add("Certification of " + jCheckBox15.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox15.getText())){
+              req.remove("Certification of " + jCheckBox15.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox15ActionPerformed
+
+    private void jCheckBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox16ActionPerformed
+      if(jCheckBox16.isSelected()){
+          req.add("Certification of " + jCheckBox16.getText());
+      }
+      else{
+          if(req.contains("Certification of " + jCheckBox16.getText())){
+              req.remove("Certification of " + jCheckBox16.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox16ActionPerformed
+
+    private void jCheckBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox17ActionPerformed
+      if(jCheckBox17.isSelected()){
+          
+          jTextField1.setEnabled(true);
+      }
+      else{
+         jTextField1.setEnabled(false);
+      }
+    }//GEN-LAST:event_jCheckBox17ActionPerformed
+
+    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
+      if(jCheckBox7.isSelected()){
+          req.add("Grades for " + jCheckBox7.getText());
+      }
+      else{
+          if(req.contains("Grades for " + jCheckBox7.getText())){
+              req.remove("Grades for " + jCheckBox7.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox7ActionPerformed
+
+    private void jCheckBox18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox18ActionPerformed
+      if(jCheckBox18.isSelected()){
+          req.add("Grades for " + jCheckBox18.getText());
+      }
+      else{
+          if(req.contains("Grades for " + jCheckBox18.getText())){
+              req.remove("Grades for " + jCheckBox18.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox18ActionPerformed
+
+    private void jCheckBox19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox19ActionPerformed
+      if(jCheckBox19.isSelected()){
+          req.add("Grades for " + jCheckBox19.getText());
+      }
+      else{
+          if(req.contains("Grades for " + jCheckBox19.getText())){
+              req.remove("Grades for " + jCheckBox19.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox19ActionPerformed
+
+    private void jCheckBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox20ActionPerformed
+      if(jCheckBox20.isSelected()){
+          req.add(jCheckBox20.getText());
+      }
+      else{
+          if(req.contains(jCheckBox20.getText())){
+              req.remove(jCheckBox20.getText());
+          }
+      }
+    }//GEN-LAST:event_jCheckBox20ActionPerformed
+
+    private void jCheckBox21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox21ActionPerformed
+      if(jCheckBox21.isSelected()){
+          req.add(jCheckBox21.getText());
+      }
+      else{
+          if(req.contains(jCheckBox21.getText())){
+              req.remove(jCheckBox21.getText());
+          }
+    }//GEN-LAST:event_jCheckBox21ActionPerformed
+    }
+    private void jCheckBox22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox22ActionPerformed
+      if(jCheckBox22.isSelected()){
+          req.add(jCheckBox22.getText());
+      }
+      else{
+          if(req.contains(jCheckBox22.getText())){
+              req.remove(jCheckBox22.getText());
+          }
+    }//GEN-LAST:event_jCheckBox22ActionPerformed
+    }
+    private void jCheckBox23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox23ActionPerformed
+      if(jCheckBox23.isSelected()){
+          req.add(jCheckBox23.getText());
+      }
+      else{
+          if(req.contains(jCheckBox23.getText())){
+              req.remove(jCheckBox23.getText());
+          }
+    }//GEN-LAST:event_jCheckBox23ActionPerformed
+    }
+    private void jCheckBox24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox24ActionPerformed
+      if(jCheckBox24.isSelected()){
+         jComboBox2.setEnabled(true);
+      }
+      else{
+         jComboBox2.setEnabled(false);      // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox24ActionPerformed
+    }
+    private void jCheckBox25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox25ActionPerformed
+      if(jCheckBox25.isSelected()){
+          jComboBox1.setEnabled(true);
+      }
+      else{
+          jComboBox1.setEnabled(false);
+    }//GEN-LAST:event_jCheckBox25ActionPerformed
+    }
+    private void jCheckBox26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox26ActionPerformed
+      if(jCheckBox26.isSelected()){
+          req.add(jCheckBox26.getText());
+      }
+      else{
+          if(req.contains(jCheckBox26.getText())){
+              req.remove(jCheckBox26.getText());
+          }
+    }//GEN-LAST:event_jCheckBox26ActionPerformed
+    }
+    private void jCheckBox27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox27ActionPerformed
+      if(jCheckBox27.isSelected()){
+          jTextField4.setEnabled(true);
+      }
+      else{
+          jTextField4.setEnabled(false);
+    }//GEN-LAST:event_jCheckBox27ActionPerformed
+    }
+    private void jCheckBox28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox28ActionPerformed
+      if(jCheckBox28.isSelected()){
+          req.add(jCheckBox28.getText());
+      }
+      else{
+          if(req.contains(jCheckBox28.getText())){
+              req.remove(jCheckBox28.getText());
+          }
+    }//GEN-LAST:event_jCheckBox28ActionPerformed
+    }
     private void cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_btnActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.first(mainPanel);
@@ -1164,72 +1563,131 @@ public class mainFrame extends javax.swing.JFrame {
         btn1.setVisible(true);
         next_btn.setVisible(false);
         prev_btn.setVisible(false);
-        tor.setSelected(false);
-        cet.setSelected(false);
-        cog.setSelected(false);
-        deploma.setSelected(false);
-        gmc.setSelected(false);
-        so.setSelected(false);
-        Proceed_Label.setVisible(true);
-        NextLabel.setVisible(false);
-        PrevLabel.setVisible(false);
-        
     }//GEN-LAST:event_cancel_btnActionPerformed
 
-    private void torActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torActionPerformed
-            if(tor.isSelected()){
-                req.add(tor.getText());
+    private void next_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_btnActionPerformed
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        if(prevpressed){
+            //prevpressed = false;
+            //card.next(mainPanel);
+        }
+        if(!flag){count++;}
+        if(count == 4){
+            
+            if(jTextField1.isEnabled() && jTextField1.getText() != ""){
+                req.add(jTextField1.getText());
+            }
+
+            if(jTextField4.isEnabled() && jTextField4.getText() != ""){
+                req.add(jTextField4.getText());
+            }
+                req = new ArrayList<String>(new LinkedHashSet<String>(req));
+                model.removeAllElements();
+                System.out.println(req);
+                for(String item: req){
+                if(!model.contains(item)){
+                     model.addElement(item);
+                }
+               
+                
+            }
+    
+
+            System.out.println(model.getSize());
+            if(!req.isEmpty()){
+                prev_btn.setEnabled(true);
+                prevpressed = false;
+                card.next(mainPanel);
+            }
+            else {
+                flag = true;
+            }
+
+        }
+
+        if(count ==5){
+            card.next(mainPanel);
+            prev_btn.setEnabled(true);
+            //NextLabel.setVisible(false);
+            //count = 0;
+
+        }
+        if(count ==6){
+            card.next(mainPanel);
+            next_btn.setVisible(false);
+            prev_btn.setVisible(false);
+        }
+    }//GEN-LAST:event_next_btnActionPerformed
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        if(count == 0 ){
+            card.next(mainPanel);
+            sn_field.requestFocus();
+        }
+        if(!flag){
+            count++;
+        }
+
+        if (count == 2){
+            String sn = sn_field.getText();
+            if(!sn.isEmpty()){
+
+                sn_field.setText("");
+                System.out.println(sn);
+                if(selectAll(sn)){
+                    name_textfield.setText(pname);
+                    sn_textfield.setText(psn);
+                    course_textfield.setText(pcourse);
+                    sy_textfield.setText(psy);
+                    flag = false;
+                    card.next(mainPanel);
+                }
+                else{
+                    flag = true;
+                }
+
             }
             else{
-                req.remove(tor.getText());
-           }
-    }//GEN-LAST:event_torActionPerformed
-
-    private void cetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetActionPerformed
-        if(cet.isSelected()){
-                req.add(cet.getText());
+                flag = true;
+                System.out.println("No SN");
             }
-            else{
-                req.remove(cet.getText());
-           }
-    }//GEN-LAST:event_cetActionPerformed
+        }
+        else if(count ==3){
+            btn1.setVisible(false);
 
-    private void cogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cogActionPerformed
-        if(cog.isSelected()){
-                req.add(cog.getText());
-            }
-            else{
-                req.remove(cog.getText());
-           }
-    }//GEN-LAST:event_cogActionPerformed
+            next_btn.setVisible(true);
+            prev_btn.setVisible(true);
+            prev_btn.setEnabled(false);
 
-    private void deplomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deplomaActionPerformed
-        if(deploma.isSelected()){
-                req.add(deploma.getText());
-            }
-            else{
-                req.remove(deploma.getText());
-           }
-    }//GEN-LAST:event_deplomaActionPerformed
+            card.next(mainPanel);
 
-    private void gmcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gmcActionPerformed
-        if(gmc.isSelected()){
-                req.add(gmc.getText());
-            }
-            else{
-                req.remove(gmc.getText());
-           }
-    }//GEN-LAST:event_gmcActionPerformed
+        }
+    }//GEN-LAST:event_btn1ActionPerformed
 
-    private void soActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soActionPerformed
-         if(so.isSelected()){
-                req.add(so.getText());
-            }
-            else{
-                req.remove(so.getText());
-           }
-    }//GEN-LAST:event_soActionPerformed
+    private void prev_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prev_btnActionPerformed
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.previous(mainPanel);
+        count--;
+        prevpressed = true;
+        flag = false;
+        if(count ==3){
+            //            count = 0;
+            //            btn1.setVisible(true);
+            //            next_btn.setVisible(false);
+            prev_btn.setEnabled(false);
 
+        }
+    }//GEN-LAST:event_prev_btnActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        req.add("Deploma for " + jComboBox2.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+       req.add("Replace Deploma for " + jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+               
     /**
      * @param args the command line arguments
      */
@@ -1395,44 +1853,71 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel NextLabel;
-    private javax.swing.JLabel PrevLabel;
-    private javax.swing.JLabel Proceed_Label;
     private javax.swing.JButton btn1;
     private javax.swing.JButton cancel_btn;
-    private javax.swing.JCheckBox cet;
-    private javax.swing.JCheckBox cog;
     private javax.swing.JLabel course_textfield;
-    private javax.swing.JCheckBox deploma;
-    private javax.swing.JCheckBox gmc;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox25;
+    private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel name_textfield;
     private javax.swing.JButton next_btn;
@@ -1442,28 +1927,12 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panel3;
     private javax.swing.JPanel panel4;
     private javax.swing.JPanel panel5;
-    private javax.swing.JPanel panel6;
     private javax.swing.JPanel panel7;
     private javax.swing.JButton prev_btn;
     private javax.swing.JLabel profilepic_label;
-    private javax.swing.JLabel req1;
-    private javax.swing.JLabel req1price;
-    private javax.swing.JLabel req2;
-    private javax.swing.JLabel req2price;
-    private javax.swing.JLabel req3;
-    private javax.swing.JLabel req3price;
-    private javax.swing.JLabel req4;
-    private javax.swing.JLabel req4price;
-    private javax.swing.JLabel req5;
-    private javax.swing.JLabel req5price;
-    private javax.swing.JLabel req6;
-    private javax.swing.JLabel req6price;
-    private javax.swing.JLabel reqTotal;
     private javax.swing.JTextField sn_field;
     private javax.swing.JLabel sn_textfield;
-    private javax.swing.JCheckBox so;
     private javax.swing.JLabel sy_textfield;
-    private javax.swing.JCheckBox tor;
     private javax.swing.JButton yes_btn;
     // End of variables declaration//GEN-END:variables
 
